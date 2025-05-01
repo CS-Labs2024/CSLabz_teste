@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 65 100% 96%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --primary: 162 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 0%;
+    --secondary-foreground: 65 100% 96%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 0 0% 0%;
+
+    --accent: 162 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --ring: 162 100% 50%;
+
+    --chart-1: 162 100% 50%;
+    --chart-2: 220 14% 96%;
+    --chart-3: 0 84% 60%;
+    --chart-4: 262 83% 58%;
+    --chart-5: 31 97% 72%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 162 100% 50%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 162 100% 50%;
+
+    --primary: 162 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 162 100% 50%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 0%;
+    --muted-foreground: 162 100% 50%;
+
+    --accent: 162 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 162 100% 50%;
+    --ring: 162 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight text-[#002b28];
+  }
+  h1 {
+    @apply text-3xl lg:text-4xl;
+  }
+  h2 {
+    @apply text-2xl lg:text-3xl;
+  }
+  h3 {
+    @apply text-xl lg:text-2xl;
+  }
+
+  /* Forçar cor preta em placeholders, selects e inputs de data */
+  ::placeholder {
+    color: #ffffff !important;
+    opacity: 1;
+  }
+
+  .input::placeholder {
+    color: #ffffff !important; /* branco */
+    opacity: 1;
+  }
+
+  input[type='date'] {
+    color: #000000 !important;
+  }
+
+  select {
+    color: #000000 !important;
+  }
+
+  select option[disabled] {
+    color: #666666 !important;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 mx-auto max-w-7xl sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply bg-white rounded-lg border shadow-sm border-gray-200 p-6;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply bg-[#00FFC6] text-[#002b28] hover:bg-[#00FFC6]/90;
+  }
+
+  .btn-secondary {
+    @apply bg-[#002b28] text-[#00FFC6] hover:bg-[#002b28]/90;
+  }
+
+  .btn-outline {
+    @apply border border-input bg-background hover:bg-[#00FFC6] hover:text-[#002b28];
+  }
+
+  .input {
+    @apply flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-[#002b28] placeholder:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FFC6] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .metric-card {
+    @apply p-6 transition-all duration-200 hover:shadow-md;
+  }
+
+  .metric-value {
+    @apply text-3xl font-bold text-[#002b28];
+  }
+
+  .chart-container {
+    @apply bg-white rounded-lg border border-gray-200 shadow-sm p-6 h-[400px];
+  }
+
+  .data-table {
+    @apply w-full border-collapse;
+  }
+
+  .data-table th {
+    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50 border-b border-gray-200;
+  }
+
+  .data-table td {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-b border-gray-200;
+  }
+
+  .data-table tr:hover {
+    @apply bg-gray-50;
+  }
+
+  .status-badge {
+    @apply px-2 py-1 text-xs font-medium rounded-full;
+  }
+
+  .status-badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .status-badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  .status-badge-danger {
+    @apply bg-red-100 text-red-800;
+  }
+}
+
+@layer utilities {
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+  .ring-ring {
+    --tw-ring-color: hsl(var(--ring));
+  }
+  .border-input {
+    border-color: hsl(var(--border));
+  }
+  .bg-header {
+    background-color: #002b28;
+  }
+
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-none {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
